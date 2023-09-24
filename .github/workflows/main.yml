@@ -13,6 +13,7 @@ jobs:
     env:
       SPONSORKIT_AFDIAN_USER_ID: ${{ secrets.AFDIAN_ID }}
       SPONSORKIT_AFDIAN_TOKEN: ${{ secrets.AFDIAN_TOKEN }}
+      SPONSORKIT_AFDIAN_EXECHANGERATE: 1
     steps:
       - uses: actions/checkout@v3
 
