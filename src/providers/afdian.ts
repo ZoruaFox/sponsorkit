@@ -52,7 +52,8 @@ export async function fetchAfdianSponsors(options: SponsorkitConfig['afdian'] = 
   const processed = sponsors.map((raw: any): Sponsorship => {
     const current = raw.current_plan
     const expireTime = current?.expire_time
-    const isExpired = expireTime ? expireTime < Date.now() / 1000 : true
+    // const isExpired = expireTime ? expireTime < Date.now() / 1000 : true
+    const isExpired = false
     return {
       sponsor: {
         type: 'User',
