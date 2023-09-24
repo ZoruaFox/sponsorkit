@@ -41,4 +41,4 @@ jobs:
           KEY_SECRET: ${{ secrets.KEY_SECRET }}
           BUCKET: frontend-wdljt
           LOCAL_PATH: ./sponsorkit/
-          REMOTE_PREFIX: meme/sponsors_test/
+          REMOTE_PREFIX: meme/sponsors/

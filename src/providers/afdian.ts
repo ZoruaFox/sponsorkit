@@ -58,7 +58,9 @@ export async function fetchAfdianSponsors(options: SponsorkitConfig['afdian'] = 
       sponsor: {
         type: 'User',
         login: raw.user.user_id,
-        name: raw.user.name,
+        name: raw.user.name.includes('爱发电用户_')
+          ? '匿名'
+          : raw.user.name,
         avatarUrl: raw.user.avatar,
         linkUrl: `https://afdian.net/u/${raw.user.user_id}`,
       },
