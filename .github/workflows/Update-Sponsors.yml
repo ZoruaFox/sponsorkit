@@ -20,6 +20,8 @@ jobs:
 
       - name: Set node
         uses: actions/setup-node@v3
+        with:
+          cache: yarn
 
       - run: |
           npm i yarn -g
