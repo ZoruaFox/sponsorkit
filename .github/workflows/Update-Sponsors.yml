@@ -5,36 +5,26 @@ on:
   schedule:
     - cron: '0 0 * * *'
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   update-sponsors:
     runs-on: ubuntu-latest
-    env:
-      SPONSORKIT_AFDIAN_USER_ID: ${{ secrets.AFDIAN_ID }}
-      SPONSORKIT_AFDIAN_TOKEN: ${{ secrets.AFDIAN_TOKEN }}
-      SPONSORKIT_AFDIAN_EXECHANGERATE: '1'
-      AFDIAN_EXECHANGERATE: '1'
     steps:
       - uses: actions/checkout@v3
 
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          cache: yarn
+          node-version: lts/*
 
-      - run: |
-          npm i yarn -g
-          yarn
+      - run: npx pnpm i
 
-      - name: Build Sponsorkit
-        run: yarn build
-        
-      - name: Run Sponsorkit script
+      - name: Update sponsors
+        run: npm run build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_LOGIN: ${{ secrets.GITHUB_LOGIN }}
-        run: node ./dist/cli.cjs
+          SPONSORKIT_AFDIAN_USER_ID: ${{ secrets.SPONSORKIT_AFDIAN_USER_ID }}
+          SPONSORKIT_AFDIAN_TOKEN: ${{ secrets.SPONSORKIT_AFDIAN_TOKEN }}
         
       - name: Install coscmd
         run: sudo pip install coscmd
@@ -48,4 +38,4 @@ jobs:
         run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
         
       - name: Upload
-        run: coscmd upload -r ./sponsorkit/ Sponsor
+        run: coscmd upload -r /home/runner/work/sponsorkit/sponsorkit Sponsor
