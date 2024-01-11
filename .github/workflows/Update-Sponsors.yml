@@ -10,6 +10,9 @@ on:
 jobs:
   update-sponsors:
     runs-on: ubuntu-latest
+    env:
+      SPONSORKIT_AFDIAN_USER_ID: ${{ secrets.SPONSORKIT_AFDIAN_USER_ID }}
+      SPONSORKIT_AFDIAN_TOKEN: ${{ secrets.SPONSORKIT_AFDIAN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
 
@@ -20,11 +23,11 @@ jobs:
 
       - run: npx pnpm i
 
-      - name: Update sponsors
+      - name: build
         run: npm run build
-        env:
-          SPONSORKIT_AFDIAN_USER_ID: ${{ secrets.SPONSORKIT_AFDIAN_USER_ID }}
-          SPONSORKIT_AFDIAN_TOKEN: ${{ secrets.SPONSORKIT_AFDIAN_TOKEN }}
+
+      - name: Update SVG
+        run: npx sponsorkit
         
       - name: Install coscmd
         run: sudo pip install coscmd
@@ -38,4 +41,4 @@ jobs:
         run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
         
       - name: Upload
-        run: coscmd upload -r /home/runner/work/sponsorkit/sponsorkit Sponsor --include "sponsors.svg"
+        run: coscmd upload -r /home/runner/work/sponsorkit/sponsorkit Sponsor --include "*.svg"
