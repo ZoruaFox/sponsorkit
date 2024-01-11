@@ -6,27 +6,22 @@ import type { SponsorkitConfig, Sponsorship, Tier } from './types'
 
 export const defaultTiers: Tier[] = [
   {
-    title: 'Past Sponsors',
-    monthlyDollars: -1,
-    preset: presets.xs,
+    title: '有兽焉Minecraft粉丝服赞助项',
+    preset: presets.xl,
   },
   {
-    title: 'Backers',
-    preset: presets.base,
-  },
-  {
-    title: 'Sponsors',
-    monthlyDollars: 10,
-    preset: presets.medium,
-  },
-  {
-    title: 'Silver Sponsors',
-    monthlyDollars: 50,
+    title: '有兽档案馆',
+    monthlyDollars: 20,
     preset: presets.large,
   },
   {
-    title: 'Gold Sponsors',
-    monthlyDollars: 100,
+    title: '有兽焉同人特典',
+    monthlyDollars: 25,
+    preset: presets.xl,
+  },
+  {
+    title: '？？？？？',
+    monthlyDollars: 40,
     preset: presets.xl,
   },
 ]
