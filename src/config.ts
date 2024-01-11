@@ -6,27 +6,22 @@ import type { SponsorkitConfig, Sponsorship, Tier } from './types'
 
 export const defaultTiers: Tier[] = [
   {
-    title: 'Past Sponsors',
-    monthlyDollars: -1,
-    preset: presets.xs,
-  },
-  {
-    title: 'Backers',
-    preset: presets.base,
-  },
-  {
-    title: 'Sponsors',
-    monthlyDollars: 10,
+    title: '石镐',
     preset: presets.medium,
   },
   {
-    title: 'Silver Sponsors',
-    monthlyDollars: 50,
+    title: '铁镐',
+    monthlyDollars: 15,
     preset: presets.large,
   },
   {
-    title: 'Gold Sponsors',
-    monthlyDollars: 100,
+    title: '钻石镐',
+    monthlyDollars: 30,
+    preset: presets.xl,
+  },
+  {
+    title: '下界合金镐',
+    monthlyDollars: 50,
     preset: presets.xl,
   },
 ]
