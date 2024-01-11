@@ -38,4 +38,4 @@ jobs:
         run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
         
       - name: Upload
-        run: coscmd upload -r /home/runner/work/sponsorkit/sponsorkit Sponsor --include *.svg --ignore "/home/runner/work/sponsorkit/sponsorkit/node_modules/*","/home/runner/work/sponsorkit/sponsorkit/example/*"
+        run: coscmd upload -r /home/runner/work/sponsorkit/sponsorkit/sponsorkit/sponsors.svg Sponsor
