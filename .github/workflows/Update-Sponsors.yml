@@ -33,6 +33,7 @@ jobs:
       - name: Run Sponsorkit script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_LOGIN: ${{ secrets.GITHUB_LOGIN }}
         run: node ./dist/cli.cjs
         
       - name: Install coscmd
