@@ -31,6 +31,8 @@ jobs:
         run: yarn build
         
       - name: Run Sponsorkit script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node ./dist/cli.cjs
         
       - name: Install coscmd
