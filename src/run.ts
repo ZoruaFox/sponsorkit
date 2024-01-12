@@ -82,7 +82,7 @@ export async function run(inlineConfig?: SponsorkitConfig, t = consola) {
 
   if (config.formats?.includes('png')) {
     const path = join(dir, `${config.name}.png`)
-    await fs.writeFile(path, await svgToPng(svg))
+    await fs.writeFile(path, await svgToPng(svg, 'utf-8'))
     t.success(`Wrote to ${r(path)}`)
   }
 }
