@@ -46,7 +46,7 @@ export const defaultConfig: SponsorkitConfig = {
   width: 800,
   outputDir: './sponsorkit',
   cacheFile: '.cache.json',
-  formats: ['json', 'svg', 'png'],
+  formats: ['json', 'svg'],
   tiers: defaultTiers,
   name: 'sponsors',
   includePrivate: false,
