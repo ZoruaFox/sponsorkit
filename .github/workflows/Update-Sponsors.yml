@@ -30,12 +30,7 @@ jobs:
         run: npx sponsorkit
 
       - name: Install CairoSVG
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.9'
-          cache: 'pip'
-          
-      - run: sudo pip3 install cairosvg
+        run: sudo pip3 install cairosvg
 
       - name: Convert SVG to PNG
         run: python scripts/svg2png.py
