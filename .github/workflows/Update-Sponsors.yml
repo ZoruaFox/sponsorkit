@@ -26,14 +26,8 @@ jobs:
       - name: build
         run: npm run build
 
-      - name: Update SVG
+      - name: Update Images
         run: npx sponsorkit
-
-      - name: Install CairoSVG
-        run: sudo pip3 install cairosvg
-
-      - name: Convert SVG to PNG
-        run: python scripts/svg2png.py
       
       - name: Install coscmd
         run: sudo pip install coscmd
