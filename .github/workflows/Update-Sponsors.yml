@@ -22,7 +22,7 @@ jobs:
           node-version: lts/*
 
       - name: Install Font
-        run: apt-get install ttf-wqy-microhei && fc-cache -fv
+        run: sudo apt-get install ttf-wqy-microhei && sudo fc-cache -fv
 
       - run: npx pnpm i
 
