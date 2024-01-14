@@ -45,6 +45,6 @@ jobs:
         
       - name: Delete Old Files & Upload
         run: |
-          coscmd delete Sponsor/sponsors.png 
+          coscmd delete Sponsor/sponsors.png -f
           coscmd delete Sponsor/sponsors.png
           coscmd upload -r /home/runner/work/sponsorkit/sponsorkit/sponsorkit/ Sponsor/ --include *.svg,*.png
