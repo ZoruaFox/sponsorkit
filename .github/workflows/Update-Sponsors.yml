@@ -43,5 +43,8 @@ jobs:
           REGION: ap-beijing
         run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
         
-      - name: Upload
-        run: coscmd upload -r /home/runner/work/sponsorkit/sponsorkit/sponsorkit/ Sponsor/ --include *.svg,*.png
+      - name: Delete Old Files & Upload
+        run: |
+          coscmd delete Sponsor/sponsors.png 
+          coscmd delete Sponsor/sponsors.png
+          coscmd upload -r /home/runner/work/sponsorkit/sponsorkit/sponsorkit/ Sponsor/ --include *.svg,*.png
