@@ -3,7 +3,7 @@ name: 定期更新赞助者名单
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 16 * * *'
   push:
     branches: [ main ]
 
