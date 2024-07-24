@@ -22,7 +22,7 @@ export async function fetchAfdianSponsors(options: SponsorkitConfig['afdian'] = 
     throw new Error('Afdian id and token are required')
 
   const sponsors: any[] = []
-  const sponsorshipApi = 'https://afdian.net/api/open/query-sponsor'
+  const sponsorshipApi = 'https://afdian.com/api/open/query-sponsor'
   let page = 1
   let pages = 1
   do {
@@ -62,7 +62,7 @@ export async function fetchAfdianSponsors(options: SponsorkitConfig['afdian'] = 
           ? '匿名'
           : raw.user.name,
         avatarUrl: raw.user.avatar,
-        linkUrl: `https://afdian.net/u/${raw.user.user_id}`,
+        linkUrl: `https://afdian.com/u/${raw.user.user_id}`,
       },
       // all_sum_amount is based on cny
       monthlyDollars: isExpired
