@@ -1,12 +1,57 @@
 import { loadConfig as _loadConfig } from 'unconfig'
 import type { SponsorkitConfig, Sponsorship, Tier, TierPartition } from '../types'
 import { FALLBACK_AVATAR } from './fallback'
-import { loadEnv } from './env'
-import { defaultConfig } from './defaults'
+import { presets } from './presets'
+import type { SponsorkitConfig, Sponsorship, Tier } from './types'
 
-export * from './tier-presets'
-export * from './fallback'
-export * from './defaults'
+export const defaultTiers: Tier[] = [
+  {
+    title: '有兽焉Minecraft粉丝服赞助项',
+    preset: presets.xl,
+  },
+  {
+    title: '有兽档案馆',
+    monthlyDollars: 20,
+    preset: presets.large,
+  },
+  {
+    title: '有兽焉同人特典',
+    monthlyDollars: 25,
+    preset: presets.xl,
+  },
+  {
+    title: '？？？？？',
+    monthlyDollars: 40,
+    preset: presets.xl,
+  },
+]
+
+export const defaultInlineCSS = `
+text {
+  font-weight: 300;
+  font-size: 14px;
+  fill: #777777;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.sponsorkit-link {
+  cursor: pointer;
+}
+.sponsorkit-tier-title {
+  font-weight: 500;
+  font-size: 20px;
+}
+`
+
+export const defaultConfig: SponsorkitConfig = {
+  width: 800,
+  outputDir: './sponsorkit',
+  cacheFile: '.cache.json',
+  formats: ['json', 'svg', 'png'],
+  tiers: defaultTiers,
+  name: 'sponsors',
+  includePrivate: false,
+  svgInlineCSS: defaultInlineCSS,
+}
 
 export function defineConfig(config: SponsorkitConfig): SponsorkitConfig {
   return config

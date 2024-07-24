@@ -1,0 +1,49 @@
+name: 定期更新赞助者名单
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * *'
+  push:
+    branches: [ main ]
+
+jobs:
+  update-sponsors:
+    runs-on: ubuntu-latest
+    env:
+      SPONSORKIT_AFDIAN_USER_ID: ${{ secrets.SPONSORKIT_AFDIAN_USER_ID }}
+      SPONSORKIT_AFDIAN_TOKEN: ${{ secrets.SPONSORKIT_AFDIAN_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Prepare Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+
+      - name: Install Font
+        run: sudo apt-get install ttf-wqy-microhei && sudo fc-cache -fv
+
+      - run: npx pnpm i
+
+      - name: build
+        run: npm run build
+
+      - name: Update Images
+        run: npx sponsorkit
+      
+      - name: Install coscmd
+        run: sudo pip install coscmd
+            
+      - name: Configure coscmd
+        env:
+          SECRET_ID: ${{ secrets.SECRET_ID }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          BUCKET: sponsor-1306537081
+          REGION: ap-beijing
+        run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+        
+      - name: Delete Old Files & Upload
+        run: |
+          coscmd delete -r Sponsor -f
+          coscmd upload -r /home/runner/work/sponsorkit/sponsorkit/sponsorkit/ Sponsor/ --include *.svg,*.png
