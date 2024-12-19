@@ -33,10 +33,10 @@ jobs:
         run: npx sponsorkit
       
       - name: Install coscmd
-        run: sudo pip install coscmd
-            
-      - name: Update coscmd
-        run: sudo pip install coscmd -U
+        run: |
+          git clone https://github.com/tencentyun/coscmd.git
+          cd coscmd
+          python setup.py install
         
       - name: Configure coscmd
         env:
