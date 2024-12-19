@@ -17,9 +17,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Prepare Environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4.1.0
         with:
           node-version: lts/*
+          cache: pnpm
 
       - name: Install Font
         run: sudo apt-get install ttf-wqy-microhei && sudo fc-cache -fv
@@ -36,6 +37,7 @@ jobs:
         uses: actions/setup-python@v5.3.0
         with:
           python-version: 3.9
+          cache: pip
       
       - name: Install coscmd
         run: |
