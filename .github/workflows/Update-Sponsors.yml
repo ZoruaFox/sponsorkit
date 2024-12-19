@@ -34,9 +34,9 @@ jobs:
       
       - name: Install coscmd
         run: |
-          git clone https://github.com/tencentyun/coscmd.git
+          sudo git clone https://github.com/tencentyun/coscmd.git
           cd coscmd
-          python setup.py install
+          sudo python setup.py install
         
       - name: Configure coscmd
         env:
