@@ -35,6 +35,9 @@ jobs:
       - name: Install coscmd
         run: sudo pip install coscmd
             
+      - name: Update coscmd
+        run: sudo pip install coscmd -U
+        
       - name: Configure coscmd
         env:
           SECRET_ID: ${{ secrets.SECRET_ID }}
